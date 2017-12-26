@@ -7,22 +7,22 @@ from character.classes.rogue import Rogue
 class Game:
     'define the game state'
     state = 0
-    playerOne = Warrior(1)
-    playerTwo = Goblin(1)
+    playerOne = None #Warrior(1)
+    playerTwo = None #Goblin(1)
     d = Dice()
 
     def __init__(self, command):
         if command == "test1":
             print("Test One: Warrior v Goblin")
-            #self.playerOne = Warrior(1)
-            # self.playerTwo = Goblin(1)
-            print(self.playerTwo.act.prof)
-            for x in self.playerTwo.act.prof:
-                z = x.getAbl()
-                y = z.getFx()
-                print(y)
-                print(y.getName())
-                print(str(y.getPow()))
+            self.playerOne = Warrior(1)
+            self.playerTwo = Goblin(1)
+            #print(self.playerTwo.act.prof)
+            #for x in self.playerTwo.act.prof:
+            #    z = x.getAbl()
+            #    y = z.getFx()
+            #    print(y)
+            #    print(y.getName())
+            #    print(str(y.getPow()))
         return
 
     def step(self):
@@ -56,12 +56,12 @@ class Game:
         return
 
     def run(self):
-        while(self.playerOne.isAlive and self.playerTwo.isAlive):
+        while(self.playerOne.isAlive() and self.playerTwo.isAlive()):
             self.step()
 
-        if(self.playerOne.isAlive):
+        if(self.playerOne.isAlive()):
             "Player One Wins"
-        elif(self.playerTwo.isAlive):
+        elif(self.playerTwo.isAlive()):
             "Player Two Wins"
         else:
             "???"
